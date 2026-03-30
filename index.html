@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Registration</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { padding: 10px; margin: 5px 0; width: 250px; }
+  </style>
+</head>
+<body>
+
+<h2>Employee Registration</h2>
+
+<input type="text" id="userName" placeholder="Full Name" required>
+
+<br>
+
+<label>
+  <input type="checkbox" id="toggle"> Advanced Config
+</label>
+
+<div id="extraField" style="display:none;">
+  <input type="text" id="extraInfo" placeholder="Additional Details">
+</div>
+
+<br>
+<button onclick="submitData()">Submit</button>
+
+<script>
+const toggle = document.getElementById("toggle");
+const extraField = document.getElementById("extraField");
+const extraInput = document.getElementById("extraInfo");
+
+toggle.addEventListener("change", () => {
+    if (toggle.checked) {
+        extraField.style.display = "block";
+    } else {
+        extraField.style.display = "none";
+        extraInput.value = ""; // 🔥 clears value
+    }
+});
+
+function submitData() {
+    const data = {
+        userName: document.getElementById("userName").value,
+        isToggled: toggle.checked,
+        extraInfo: toggle.checked ? extraInput.value : null
+    };
+
+    fetch("PASTE_POWER_AUTOMATE_URL_HERE", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => alert("Submitted successfully!"))
+    .catch(err => alert("Error submitting"));
+}
+</script>
+
+</body>
+</html>

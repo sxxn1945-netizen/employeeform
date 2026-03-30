@@ -47,7 +47,7 @@ function submitData() {
         extraInfo: toggle.checked ? extraInput.value : null
     };
 
-    fetch("PASTE_POWER_AUTOMATE_URL_HERE", {
+    fetch("https://default71b778b10a134b09bd4294367e4d13.a2.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/292c68db525c4e81b86f2354e25dca59/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HhulS4e8g4KSaKegrFtqU4tj9kShCI4gTOWYtkNHWMQ", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
